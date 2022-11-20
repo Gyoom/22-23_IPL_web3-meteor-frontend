@@ -1,5 +1,5 @@
 {
-  "name": "Web3_frontend_groupe3",
+  "name": "chat",
   "private": true,
   "scripts": {
     "start": "meteor run"
@@ -7,5 +7,11 @@
   "dependencies": {
     "@babel/runtime": "^7.17.9",
     "meteor-node-stubs": "^1.2.1"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "client/main.jsx",
+      "server": "server/main.js"
+    }
   }
 }
