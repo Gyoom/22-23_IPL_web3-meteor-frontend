@@ -1,0 +1,7 @@
+{
+    "galaxy.meteor.com": {
+        "env" : {
+            "MONGO_URL": "mongodb+srv://Gyoom:$1234azer@web3.xpwfx7e.mongodb.net/noteApp?retryWrites=true&w=majority"
+        }
+    }
+}
