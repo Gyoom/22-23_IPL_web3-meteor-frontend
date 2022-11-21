@@ -1,12 +1,10 @@
 import React from 'react';
-import { Routes } from './Router.js';
-
-
+import { Chat } from './Chat.jsx';
 
 export const App = () => {
   return (
       <div>
-        <Routes/>
+        <Chat />
       </div>
   );
 };

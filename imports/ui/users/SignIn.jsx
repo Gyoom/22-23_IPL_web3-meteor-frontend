@@ -1,24 +1,27 @@
+import React from 'react';
 import { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
+import { UsersCollection } from '../../api/users';
 
 
 export const SignIn = () => {
-    const [pseudo, setPseudo] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const addUser = ( event ) => {
+    const login = ( event ) => {
         event.preventDefault()
-        Meteor.loginWithPassword(pseudo, password, error => {
+        return Meteor.call('test', email, password, error => {
             if (error) {
                 console.log(error);
+                console.log("yes");
                 return;
             }
             console.log('succes');
-        })
+        });
     }
 
     const handleChangePseudo = ( event ) => {
-        setPseudo(event.target.value);
+        setEmail(event.target.value);
     }
 
     const handleChangePassword = ( event ) => {
@@ -26,9 +29,10 @@ export const SignIn = () => {
     }
 
     return (
-        <form onSubmit={addUser}>
-            <input type='text' value = {pseudo} onChange={handleChangePseudo}></input>
-            <input type='password' value = {password} onChange={handleChangePassword}></input>
+        <form onSubmit={login}>
+            <label>Sign In : </label><br />
+            <input type='text' placeholder='type your nickname' value = {email} onChange={handleChangePseudo}></input>
+            <input type='password' placeholder='type your password' value = {password} onChange={handleChangePassword}></input>
             <button type='submit'>Sign In</button>
         </form>
     );

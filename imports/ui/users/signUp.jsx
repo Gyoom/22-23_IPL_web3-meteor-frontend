@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { Accounts } from 'meteor/accounts-base';
 
@@ -32,9 +33,10 @@ export const SignUp = () => {
 
     return (
         <form onSubmit={addUser}>
-            <input type='text' value = {pseudo} onChange={handleChangePseudo}></input>
-            <input type='text' value = {email} onChange={handleChangeEmail}></input>
-            <input type='password' value = {password} onChange={handleChangePassword}></input>
+            <label>Sign Up : </label><br />
+            <input type='text' placeholder='type your nickname' value = {pseudo} onChange={handleChangePseudo}></input>
+            <input type='text' placeholder='type your email' value = {email} onChange={handleChangeEmail}></input>
+            <input type='password' placeholder='type your password' value = {password} onChange={handleChangePassword}></input>
             <button type='submit'>create new user</button>
         </form>
     );
