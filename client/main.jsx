@@ -3,16 +3,17 @@ import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 import { App } from '/imports/ui/App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Login } from '/imports/ui/Login'
+import { Auth } from '/imports/ui/users/Auth';
+import { RoutesPath } from '/utils/RoutesPath';
 
 Meteor.startup(() => {
   const router = createBrowserRouter([
     {
-      path: "/",
-      element: <Login />,
+      path: '/',
+      element: <Auth />,
       children: [
         {
-          path: "home",
+          path: '/home',
           element: <App />
         },
       ],
