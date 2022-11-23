@@ -22,3 +22,6 @@ accounts-password
 check
 quave:collections
 aldeed:collection2
+blaze
+jquery
+react-meteor-data

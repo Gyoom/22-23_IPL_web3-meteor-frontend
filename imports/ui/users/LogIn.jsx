@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
 import { Meteor } from 'meteor/meteor';
+import { MembersCollection } from '/imports/api/members'; // ne pas supprimer !!!
+import { useTracker } from 'meteor/react-meteor-data';
 
 
 export const LogIn = () => {
@@ -12,7 +14,7 @@ export const LogIn = () => {
     const login = ( event ) => {
         event.preventDefault()
         usersLogin(email, password);
-        console.log(usersGetAll());
+        joinARoom("A", "B", "C");
     }
 
     const handleChangePseudo = ( event ) => {

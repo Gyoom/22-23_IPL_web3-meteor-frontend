@@ -1,10 +1,15 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-import { check } from 'meteor/check'
+import { check } from 'meteor/check';
+import { useTracker } from 'meteor/react-meteor-data';
 
 
 
 usersLogin = function(email, password) { // ok
+    if (usersGetCurrent() != null) {
+        console.log ('utilisateur actuellement connecté');
+        return;
+    }
     check(email, String);
     check(password, String);
 
@@ -18,6 +23,10 @@ usersLogin = function(email, password) { // ok
 },
 
 usersLogout = function() { // ok
+    if (usersGetCurrent() == null) {
+        console.log ('aucun utilisateur actuellement connecté');
+        return;
+    }
     Meteor.logout(error => {
         if (error) {
             console.log('Error users.logout :' + error);
@@ -28,6 +37,11 @@ usersLogout = function() { // ok
 },
 
 usersAddOne = function(username, email, password) { // ok
+    if (usersGetCurrent() != null) {
+        console.log ('utilisateur actuellement connecté');
+        return;
+    }
+
     check(username, String);
     check(email, String);
     check(password, String);
@@ -43,22 +57,29 @@ usersAddOne = function(username, email, password) { // ok
         }
         console.log('users.addOne succes');
     });
-},
-
-usersGetAll = function() {
-    return Meteor.users.find().fetch();
 },    
 
 usersGetCurrent = function() { // ok
     return Meteor.user();
 },
 
-usersGetOneById = function(id) {
+usersGetOneById = function(id) { // ok
+    return useTracker(() => {
     check(id, String);
+    Meteor.subscribe('getAllUsers');
+    return Meteor.users.find({_id:id}).fetch();
+    //.collection._docs._map;
+    });
+}
 
-    return Meteor.user.findById(id);
-},
-
+usersGetAll = function() { // ok 
+    return useTracker(() => {
+        Meteor.subscribe('getAllUsers');
+        return Meteor.users.find().fetch();
+    });
+}
+    
+/*
 usersDeleteOneById = function() {
     return;
 },
@@ -66,17 +87,4 @@ usersDeleteOneById = function() {
 userDeleteAll = function() {
     return;
 }
-
-const USER_FIELDS = {
-    username: 1,
-    emails: 1,
-  };
-  
-Meteor.publish('singleUser', function (userId) {
-    // Make sure userId is a string.
-    
-    check(userId, String);
-  
-    // Publish a single user - make sure only allowed fields are sent.
-    return Meteor.users.find(userId, { fields: USER_FIELDS });
-  });
+*/
