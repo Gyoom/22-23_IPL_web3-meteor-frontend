@@ -1,22 +1,20 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
-import { App } from '/imports/ui/App';
+import { AppLoader } from '../imports/ui/App/AppLoader';
+import { Chat } from '../imports/ui/rooms/Chat';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Auth } from '/imports/ui/users/Auth';
 import { RoutesPath } from '/utils/RoutesPath';
 
 Meteor.startup(() => {
   const router = createBrowserRouter([
     {
-      path: '/',
-      element: <Auth />,
-      children: [
-        {
-          path: '/home',
-          element: <App />
-        },
-      ],
+      path: '/login',
+      element: <AppLoader />,
+    },
+    {
+      path: '/home',
+      element: <Chat />,
     },
   ]);
 

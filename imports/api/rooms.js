@@ -3,6 +3,7 @@ import { Mongo } from 'meteor/mongo';
 import { useTracker } from 'meteor/react-meteor-data';
 import { check } from 'meteor/check';
 import { MembersCollection } from '/imports/api/members'; // ne pas supprimer !!!
+import { UsersCollection } from './users'; // ne pas supprimer !!!
 
 export const RoomsCollection = new Mongo.Collection('rooms');
 

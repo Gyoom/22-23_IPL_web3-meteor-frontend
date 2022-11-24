@@ -1,7 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { MessagesCollection } from '/imports/api/messages';
-import { RoomsCollection } from '/imports/api/rooms';
+import { RoomsCollection } from '/imports/api/rooms'; // ne pas supprimer !!!
 import { MembersCollection } from '/imports/api/members';
+import { UsersCollection } from '../imports/api/users'; // ne pas supprimer !!!
 
 // Member Publish
 

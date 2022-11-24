@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
 import { Meteor } from 'meteor/meteor';
 import { MembersCollection } from '/imports/api/members'; // ne pas supprimer !!!
-import { useTracker } from 'meteor/react-meteor-data';
+import { redirect } from "react-router-dom";
+
 
 
 export const LogIn = () => {
@@ -14,7 +15,8 @@ export const LogIn = () => {
     const login = ( event ) => {
         event.preventDefault()
         usersLogin(email, password);
-        joinARoom("A", "B", "C");
+        return redirect("/home");
+        console.log('test');
     }
 
     const handleChangePseudo = ( event ) => {
@@ -27,9 +29,7 @@ export const LogIn = () => {
 
     return (
         <div>
-            <h3>Utilisateur actuel : {Meteor.user() ? Meteor.user().username : 'aucun'}</h3>
-            <form onSubmit={login}>
-                
+            <form onSubmit={login}>         
                 <label>Log In :</label><br />
                 <input type='text' placeholder='type your nickname' value = {email} onChange={handleChangePseudo}></input>
                 <input type='password' placeholder='type your password' value = {password} onChange={handleChangePassword}></input>

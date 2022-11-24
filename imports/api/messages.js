@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { useTracker } from 'meteor/react-meteor-data';
 import { check } from 'meteor/check';
+import { UsersCollection } from './users'; // ne pas supprimer !!!
 
 export const MessagesCollection = new Mongo.Collection('messages');
 

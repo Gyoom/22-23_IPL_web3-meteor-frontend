@@ -1,5 +1,6 @@
 import React from 'react';
 import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
+import { redirect } from "react-router-dom";
 
 
 export const LogOut = () => {
@@ -7,7 +8,8 @@ export const LogOut = () => {
     const logout = ( event ) => {
         event.preventDefault()
         usersLogout();
-        console.log(usersGetCurrent());
+        return redirect("/login");
+        
     }
 
     return (

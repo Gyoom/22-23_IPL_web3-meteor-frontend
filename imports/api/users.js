@@ -4,12 +4,12 @@ import { check } from 'meteor/check';
 import { useTracker } from 'meteor/react-meteor-data';
 
 
-
 usersLogin = function(email, password) { // ok
     if (usersGetCurrent() != null) {
-        console.log ('utilisateur actuellement connecté');
+        console.log ('utilisateur actuellement connecté : ', usersGetCurrent().username);
         return;
     }
+    
     check(email, String);
     check(password, String);
 
@@ -19,7 +19,7 @@ usersLogin = function(email, password) { // ok
             return;
         }
         console.log('users.login succes');
-    });
+    }); 
 },
 
 usersLogout = function() { // ok

@@ -1,27 +1,28 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import React from 'react';
+import { MessageForm } from '../messages/MessageForm';
+import { MessagesCollection } from '/imports/api/messages'; // ne pas supprimer !!!
+import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
+import { LogOut } from '../users/LogOut';
+import { redirect } from "react-router-dom";
 
 export const Chat = () => {
-    const [newMessage, setNewMessage] = useState('')
-  
-    const addMessage = ( event ) => {
-
-    }
-
-    const handleAddMessage = ( event ) => {
-        setNewMessage(event.target.value)
-    }
+    const [messages, setMessages] = useState();
    
+    if (usersGetCurrent() == null) {
+        redirect("Login");
+        console.log('redirect');
 
+    }
     return (
 
         <div>
-            <form onSubmit={addMessage}>
+            <h1>Chat</h1>
+            <LogOut />
+            <div>
 
-                <div>Message : <input value={newMessage} onChange={handleAddMessage} /></div>
-
-                <div><button type='submit'>post</button></div>
-            </form>
+            </div>
+            <MessageForm />
         </div>
     ) 
 }
