@@ -1,9 +1,7 @@
 // Dependencies :
 import React from 'react';
 // Calls to server :
-import { MessagesCollection } from '/imports/api/messages'; // ne pas supprimer !!!
-import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
-import { MembersCollection } from '/imports/api/members'; // ne pas supprimer !!!
+import { getAllMessagesFromARoom } from '/imports/api/messages';
 // Components :
 import { MessageForm } from '../messages/MessageForm';
 import { MessageLine } from '../messages/MessageLine';

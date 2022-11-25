@@ -2,7 +2,7 @@
 import React, { useState} from 'react';
 import { useNavigate } from "react-router-dom";
 // calls to server :
-import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
+import { usersAddOne } from '../../api/users';
 
 
 

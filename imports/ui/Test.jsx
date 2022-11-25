@@ -9,9 +9,6 @@ export const Test = () => {
 
     const test = ( event ) => {
         event.preventDefault()
-       console.log("find one : ", Meteor.users.findOne(Meteor.userId()).username);
-       console.log("user : ", Meteor.user().username);
-       console.log("get : ", getLoggedUser().username);
        
     }
 

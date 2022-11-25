@@ -33,3 +33,5 @@ createARoom = function(userId, name, pseudo) {
 
   joinARoom(userId, roomId, pseudo);
 }
+
+export { createARoom };

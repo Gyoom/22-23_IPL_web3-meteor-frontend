@@ -88,12 +88,4 @@ getAllUsers = function() { // ok
     });
 }
     
-/*
-usersDeleteOneById = function() {
-    return;
-},
-
-userDeleteAll = function() {
-    return;
-}
-*/
+export { usersLogin, usersLogout, usersAddOne, getLoggedUser, getUserByName, getAllUsers };

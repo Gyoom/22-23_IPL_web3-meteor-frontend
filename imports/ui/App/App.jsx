@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { Context } from "../contexts/ActualUserContext";
 // Calls to server : 
-import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
+import { usersLogout } from '../../api/users';
 // Components : 
 import { Chat } from '../rooms/Chat';
 import { Auth } from '../users/Auth';

@@ -2,14 +2,14 @@
 import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
 import { Accounts } from 'meteor/accounts-base';
-// Calls to server  :
+// dbs  :
 import { MessagesCollection } from '/imports/api/messages';
 import { RoomsCollection } from '/imports/api/rooms';
 import { MembersCollection } from '/imports/api/members';
 
 // Member Publish
 
-Meteor.publish('isMemberOf', function ({username, roomName}) { //ok
+Meteor.publish('isMemberOf', function ({username, roomName}) { // ok
     return MembersCollection.find({username: username, roomName: roomName});
 });
 
@@ -17,7 +17,7 @@ Meteor.publish('getRoomsOf', function ({username}) { // ok
     return MembersCollection.find({username: username});
 });
 
-async function insertMember({ username, roomName, pseudo }) { //ok
+async function insertMember({ username, roomName, pseudo }) { // ok
     await MembersCollection.insertAsync({ username, roomName, pseudo });
 }
 
@@ -26,10 +26,6 @@ async function insertMember({ username, roomName, pseudo }) { //ok
 Meteor.publish('getAllUsers', function () { // ok
     return Meteor.users.find({});
 });
-
-async function insertUser({ username, email, password }) { // ok
-    await Meteor.users.insertAsync({ username, email, password });
-}
 
 // Rooms Publish
 

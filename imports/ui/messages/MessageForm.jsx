@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 // Calls to server :
-import { MessagesCollection } from '/imports/api/messages'; // ne pas supprimer !!!
+import { SendAMessage } from '/imports/api/messages';
 
 
 export const MessageForm = ({ roomName }) => {

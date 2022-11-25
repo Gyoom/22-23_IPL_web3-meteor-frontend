@@ -4,20 +4,16 @@ import { Meteor } from 'meteor/meteor';
 import { useNavigate } from "react-router-dom";
 import { Context } from "../contexts/ActualUserContext";
 // Calls to server : 
-import { MessagesCollection } from '/imports/api/messages'; // ne pas supprimer !!!
-import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
-import { MembersCollection } from '/imports/api/members'; // ne pas supprimer !!!
+import { getRoomsOf } from '/imports/api/members';
 // Components :
 import { RoomChat } from './RoomChat';
 import { RoomSelect } from './RoomSelect';
 
 export const Chat = () => {
     const [roomSelected, setRoomSelected] = useState("");
-   // const [messages, setMessages] = useState(getAllMessagesFromARoom("AlfredRoom"));
     const rooms = getRoomsOf(Meteor.user()? Meteor.user().username : "");
-    const messages = getAllMessagesFromARoom(roomSelected);
     const navigate = useNavigate();
-    const { actualUser}  = useContext(Context);
+    const { actualUser }  = useContext(Context);
 
 
     useEffect(() => {

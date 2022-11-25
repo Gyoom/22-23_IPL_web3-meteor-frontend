@@ -52,3 +52,5 @@ getRoomsOf = function(username) { // ok
         return MembersCollection.find().fetch();
     });
 }
+
+export { joinARoom, isMemberOf, getRoomsOf };

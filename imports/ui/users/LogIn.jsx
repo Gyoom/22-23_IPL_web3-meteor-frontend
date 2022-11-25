@@ -3,10 +3,8 @@ import React, {useState, useContext} from 'react';
 import { Context } from "../contexts/ActualUserContext";
 import { useNavigate } from "react-router-dom";
 // Calls to server :
-import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
-import { MembersCollection } from '/imports/api/members'; // ne pas supprimer !!!
-import { MessagesCollection } from '/imports/api/messages'; // ne pas supprimer !!!
-import { RoomsCollection } from '../../api/rooms'; // ne pas supprimer !!!
+import { usersLogin } from '../../api/users';
+import { getLoggedUser } from '../../api/users';
 
 
 
@@ -14,7 +12,7 @@ import { RoomsCollection } from '../../api/rooms'; // ne pas supprimer !!!
 export const LogIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { actualUser, pickActualUser } = useContext(Context);
+    const { pickActualUser } = useContext(Context);
     const navigate = useNavigate();
 
 

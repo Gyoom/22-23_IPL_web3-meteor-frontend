@@ -2,8 +2,6 @@
 import React, { useEffect, useContext } from 'react';
 import { Context } from "../contexts/ActualUserContext";
 import { useNavigate } from "react-router-dom";
-// Calls to server :
-import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
 // Components
 import { Register } from './Register';
 import { LogIn } from './LogIn';
