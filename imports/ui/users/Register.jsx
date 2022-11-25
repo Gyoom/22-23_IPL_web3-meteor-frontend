@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
 import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -9,11 +10,14 @@ export const Register = () => {
     const [pseudo, setPseudo] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
 
     const addUser = ( event ) => {
         event.preventDefault()
         usersAddOne(pseudo, email, password);
-        return redirect("/login");
+        navigate('/');
+        
     }
 
     const handleChangePseudo = ( event ) => {

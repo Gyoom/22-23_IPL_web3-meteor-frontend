@@ -6,10 +6,13 @@ import { useContext } from 'react';
 
 
 export const UserState = () => {
+    const { actualUser } = useContext(Context);
+
+
 
     return (
         <div>
-            <h3>Utilisateur actuel :</h3>
+            <h3>Utilisateur actuel : {actualUser}</h3>
         </div>
     );
 }

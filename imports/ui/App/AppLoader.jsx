@@ -4,8 +4,8 @@ import { App } from "./App";
 
 export const AppLoader = () => {
   return (
-    <LanguageProviderWrapper>
-        <App />
-    </LanguageProviderWrapper>
+       <LanguageProviderWrapper>
+          <App />
+      </LanguageProviderWrapper>  
   );
 };

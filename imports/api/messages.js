@@ -3,42 +3,46 @@ import { Mongo } from 'meteor/mongo';
 import { useTracker } from 'meteor/react-meteor-data';
 import { check } from 'meteor/check';
 import { UsersCollection } from './users'; // ne pas supprimer !!!
+import moment from 'moment';
 
 export const MessagesCollection = new Mongo.Collection('messages');
 
 MessagesCollection.allow({
-    insert: function(userId, roomId, pseudo) {
+    insert: function(username, roomName, text) {
       return true;
     }
 });
 
 
-SendAMessage = function(userId, roomId, text) { // ok
-    const actualUser = usersGetCurrent();
+SendAMessage = function(username, roomName, text) { // ok
+    const actualUser = getLoggedUser().username;
     if (actualUser == null) {
         console.log ('Vous devez être connecté');
         return;
-    } else if (actualUser != userId) {
+    } else if (actualUser != username) {
         console.log('vous ne pouvez par envoyer un message sous le nom dun autre utilisateur');
     }
 
-    check(userId, String);
-    check(roomId, String);
+    check(username, String);
+    check(roomName, String);
     check(text, String);
 
-    return MessagesCollection.insert({ userId, roomId, text, createdAt: Date() }, error => {
+    const m = moment(new Date());
+    const date = m.format('DD-MM-YYYY[, ]HH:mm:ss');
+
+    return MessagesCollection.insert({ username, roomName, text, createdAt: date }, error => {
         if (error) {
             console.log('Error SendAMessage.MessageCollection.insert :' + error);
             return;
         }
-        console.log('joinARoom succes');
+        console.log('SendAMessage succes');
     });
 }
 
-getAllMessageFromARoom = function(roomId) {
-    check(roomId, String);
+getAllMessagesFromARoom = function(roomName) {
+    check(roomName, String);
     return useTracker(() => {
-        Meteor.subscribe('getAllMessageFromARoom', roomId);
+        Meteor.subscribe('getAllMessagesFromARoom', {roomName:roomName});
         return MessagesCollection.find().fetch();
     });
 }

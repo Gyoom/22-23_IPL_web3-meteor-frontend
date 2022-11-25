@@ -43,10 +43,10 @@ isMemberOf = function(userId, roomId) { // ok
     });
 }
 
-getRoomsOf = function(userId) { // ok 
-    check(userId, String);
+getRoomsOf = function(username) { // ok 
+    check(username, String);
     return useTracker(() => {
-        Meteor.subscribe('getRoomsOf', {userId:userId})
+        Meteor.subscribe('getRoomsOf', {username:username})
         return MembersCollection.find().fetch();
     });
 }

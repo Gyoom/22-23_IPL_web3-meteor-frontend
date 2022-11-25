@@ -1,11 +1,11 @@
-import React from "react";
+import React, { createContext } from "react";
 import { useState } from 'react';
 
-const Context = React.createContext(null)
+const Context = createContext();
 
 const ProviderWrapper = (props) => {
 
-    const [actualUser, setActualUser] = useState(null)
+    const [actualUser, setActualUser] = useState("Aucun")
 
     const pickActualUser = (newActualUser) => {
         setActualUser(newActualUser)    

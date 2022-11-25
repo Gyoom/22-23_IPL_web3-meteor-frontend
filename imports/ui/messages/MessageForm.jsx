@@ -10,7 +10,7 @@ export const MessageForm = () => {
 
     const send = ( event ) => {
         event.preventDefault()
-        SendAMessage(Meteor.userId(), "", text); // TODO
+        SendAMessage(Meteor.user().username, "", text); // TODO
         
     }
 

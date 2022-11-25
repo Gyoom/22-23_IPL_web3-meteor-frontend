@@ -6,6 +6,7 @@ import { LogOut } from './LogOut';
 import { UserState } from './UserState';
 import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
 import { Meteor } from 'meteor/meteor';
+import { Test } from '../Test';
 
 export const Auth = () => {
     return (
@@ -15,6 +16,7 @@ export const Auth = () => {
             <Register />
             <LogIn />
             <LogOut />
+            <Test />
         </div>
     );
 };
