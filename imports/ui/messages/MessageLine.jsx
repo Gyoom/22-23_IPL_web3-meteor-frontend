@@ -1,5 +1,11 @@
-export const Display = ({ date, username, text }) => {
+// Dependancies : 
+import React from 'react';
+
+export const MessageLine = ({ username, date, text }) => {
     return (
-      <p>{date} : {username} - {text}</p>
+      <div class="messages">
+        <p> {username} ({date}) : {text}</p>
+      </div>
+  
     )
   }

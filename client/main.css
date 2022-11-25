@@ -1,1 +1,115 @@
+body {
+    text-align: center;
+    margin: 0px;
+}
+
+#app nav
+{
+    text-align: left;
+}
+
+#app nav *
+{
+    text-align: left;
+ margin:10px; 
+}
+
+#auth {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+#register{
+    width: 50%;
+    border: 2px solid ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+#register *{
+
+    margin: 5px;
+}
+
+#login{
+    width: 50%;
+    border: 2px solid ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+#login *{
+
+    margin: 5px;
+}
+
+#chat {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+#roomSelected {
+    width: 90%;
+    border: 2px solid ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+#roomChat {
+    width: 90%;
+    border: 2px solid ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+#messageChat {
+    width: 90%;
+    border: 2px solid ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.messages {
+    text-align: left;
+    padding: 0px;
+    margin: 0px;
+}
+
+#messageForm {
+    width: 90%;
+    border: 2px solid ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding: 15px;
+}
 

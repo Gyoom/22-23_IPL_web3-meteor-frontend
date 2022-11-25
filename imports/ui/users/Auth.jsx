@@ -1,22 +1,30 @@
-import React from 'react';
-import { useState } from 'react';
+// Dependancies
+import React, { useEffect, useContext } from 'react';
+import { Context } from "../contexts/ActualUserContext";
+import { useNavigate } from "react-router-dom";
+// Calls to server :
+import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
+// Components
 import { Register } from './Register';
 import { LogIn } from './LogIn';
-import { LogOut } from './LogOut';
-import { UserState } from './UserState';
-import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
-import { Meteor } from 'meteor/meteor';
-import { Test } from '../Test';
+
 
 export const Auth = () => {
+    const { actualUser}  = useContext(Context);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (actualUser != "Aucun") {
+            console.log("user already login");
+            navigate('/');
+        }
+    });
+
     return (
-        <div>
+        <div id ="auth">
             <h1>Authentification</h1>
-            <UserState />
             <Register />
             <LogIn />
-            <LogOut />
-            <Test />
         </div>
     );
 };

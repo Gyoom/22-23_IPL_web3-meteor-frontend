@@ -1,8 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
-import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
-import { redirect } from "react-router-dom";
+// Dependancies :
+import React, { useState} from 'react';
 import { useNavigate } from "react-router-dom";
+// calls to server :
+import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
 
 
 
@@ -34,12 +34,12 @@ export const Register = () => {
     }
 
     return (
-        <div>
+        <div id="register">
             <form onSubmit={addUser}>
                 <label>Register : </label><br />
-                <input type='text' placeholder='type your nickname' value = {pseudo} onChange={handleChangePseudo}></input>
-                <input type='text' placeholder='type your email' value = {email} onChange={handleChangeEmail}></input>
-                <input type='password' placeholder='type your password' value = {password} onChange={handleChangePassword}></input>
+                <input type='text' placeholder='type your nickname' value = {pseudo} onChange={handleChangePseudo}></input><br />
+                <input type='text' placeholder='type your email' value = {email} onChange={handleChangeEmail}></input><br />
+                <input type='password' placeholder='type your password' value = {password} onChange={handleChangePassword}></input><br />
                 <button type='submit'>Register</button>
             </form>
         </div>

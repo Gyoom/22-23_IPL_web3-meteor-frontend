@@ -1,9 +1,11 @@
+// Dependancies :
 import { Meteor } from 'meteor/meteor';
+import moment from 'moment';
+import { Accounts } from 'meteor/accounts-base';
+// Calls to server  :
 import { MessagesCollection } from '/imports/api/messages';
 import { RoomsCollection } from '/imports/api/rooms';
 import { MembersCollection } from '/imports/api/members';
-import { UsersCollection } from '../imports/api/users';
-import moment from 'moment';
 
 // Member Publish
 
@@ -53,8 +55,18 @@ async function insertMessage({ username, roomName, text }) { // ok
 
 Meteor.startup(async () => {
     if (await RoomsCollection.find().countAsync() === 0) {
-        //await usersAddOne("Alfred", "Alfred", "ABC");
-        //await usersAddOne("Max", "Max", "ABC");
+
+        await Accounts.createUser({
+            username: "Alfred", 
+            email: "Alfred", 
+            password: "ABC"
+        });
+
+        await Accounts.createUser({
+            username: "Max", 
+            email: "Max", 
+            password: "ABC"
+        });
 
         await insertRoom({
             username: 'Alfred',

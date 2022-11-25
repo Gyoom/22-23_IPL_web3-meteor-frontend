@@ -1,21 +1,34 @@
-import React from 'react';
-import { useState } from 'react';
+// Dependancies :
+import React, { useContext } from 'react';
+import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Context } from "../contexts/ActualUserContext";
+// Calls to server : 
+import { UsersCollection } from '../../api/users'; // ne pas supprimer !!!
+// Components : 
 import { Chat } from '../rooms/Chat';
 import { Auth } from '../users/Auth';
-import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';  
 
 export const App = () => {
+  const { actualUser, pickActualUser } = useContext(Context);
   
   return (
     <BrowserRouter>  
-      <div className="App">  
+      <div id="app">  
        <nav>
-           <Link to="/">Home</Link>  
-           <Link to="/login">login </Link>  
+           <Link to="/">Chat</Link>   
+          {actualUser == "Aucun"? 
+          <Link to="/login">{actualUser == "Aucun" ? "Auth" : actualUser} </Link> : 
+          <Link to="/logout" onClick={() => {
+              const navigate = useNavigate();
+               usersLogout();
+               pickActualUser("Aucun");
+               navigate('/login');
+           }}>Logout </Link>}
       </nav> 
       <Routes>  
             <Route path='/' element={< Chat />}></Route>  
             <Route path='/login' element={< Auth />}></Route>
+            <Route path='/logout' element={< Auth />}></Route>
      </Routes>  
      </div>  
     </BrowserRouter>  

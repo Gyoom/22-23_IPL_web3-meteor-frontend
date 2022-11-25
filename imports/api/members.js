@@ -1,7 +1,9 @@
+// Dependancies :
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { useTracker } from 'meteor/react-meteor-data';
 import { check } from 'meteor/check';
+// Calls to server : :
 import { UsersCollection } from './users'; // ne pas supprimer !!!
 
 export const MembersCollection = new Mongo.Collection('members');

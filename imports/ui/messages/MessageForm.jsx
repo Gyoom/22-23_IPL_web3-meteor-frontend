@@ -1,16 +1,17 @@
-import React from 'react';
-import { useState } from 'react';
+// Dependancies :
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { MessagesCollection } from '/imports/api/messages';
+// Calls to server :
+import { MessagesCollection } from '/imports/api/messages'; // ne pas supprimer !!!
 
 
-export const MessageForm = () => {
+export const MessageForm = ({ roomName }) => {
     const [text, setText] = useState('');
   
 
     const send = ( event ) => {
         event.preventDefault()
-        SendAMessage(Meteor.user().username, "", text); // TODO
+        SendAMessage(Meteor.user().username, roomName, text); 
         
     }
 
@@ -19,9 +20,9 @@ export const MessageForm = () => {
     }
 
     return (
-        <div>
+        <div id="messageForm">
             <form onSubmit={send}>             
-                <label>New Message : </label><br />
+                <label>New Message : </label>
                 <input type='text' placeholder='type ...' value = {text} onChange={handleChangeText}></input>
                 <button type='submit'>Send</button>
             </form>
