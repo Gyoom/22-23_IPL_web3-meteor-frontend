@@ -14,8 +14,8 @@ export const App = () => {
   return (
     <BrowserRouter>  
       <div id="app">  
-       <nav>
-           <Link to="/">Chat</Link>   
+       <nav className="text-center">
+          <Link to="/">Chat</Link>
           {actualUser == "Aucun"? 
           <Link to="/login">{actualUser == "Aucun" ? "Auth" : actualUser} </Link> : 
           <Link to="/logout" onClick={() => {

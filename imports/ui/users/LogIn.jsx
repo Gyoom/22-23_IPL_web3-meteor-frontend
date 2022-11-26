@@ -35,13 +35,25 @@ export const LogIn = () => {
     }
 
     return (
-        <div id="login">
-            <form onSubmit={login}>         
-                <label>Log In :</label><br />
-                <input type='text' placeholder='type your email' value = {email} onChange={handleChangePseudo}></input><br />
-                <input type='password' placeholder='type your password' value = {password} onChange={handleChangePassword}></input><br />
-                <button type='submit'>Log In</button>
-            </form>
-        </div>
+
+            <div id="login">  
+                <div className="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                    <h2>Login</h2>
+                    
+                    <form onSubmit={login} >
+
+                    <div className="form-outline mb-4">
+                        <input type="text" value = {email} onChange={handleChangePseudo} className="form-control" placeholder='Email'/>
+                    </div>
+
+                    <div className="form-outline mb-4">
+                        <input type="password" value = {password} onChange={handleChangePassword} className="form-control" placeholder='Password'/>
+                    </div>
+
+                    <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
+
+                    </form>
+                </div>
+            </div>
     );
 }

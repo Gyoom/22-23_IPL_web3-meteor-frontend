@@ -34,14 +34,30 @@ export const Register = () => {
     }
 
     return (
-        <div id="register">
-            <form onSubmit={addUser}>
-                <label>Register : </label><br />
-                <input type='text' placeholder='type your nickname' value = {pseudo} onChange={handleChangePseudo}></input><br />
-                <input type='text' placeholder='type your email' value = {email} onChange={handleChangeEmail}></input><br />
-                <input type='password' placeholder='type your password' value = {password} onChange={handleChangePassword}></input><br />
-                <button type='submit'>Register</button>
-            </form>
+        <div id="register" >
+            <div className="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+                    <h2>Register</h2>
+                    <form onSubmit={addUser}>
+
+                    <div className="form-outline mb-4">
+                        <input type="text" value = {pseudo} onChange={handleChangePseudo} className="form-control" placeholder='Username'/>
+                    </div>
+
+                    <div className="form-outline mb-4">
+                        <input type="text" value = {email} onChange={handleChangeEmail} className="form-control" placeholder='Email'/>
+                    </div>
+
+                    <div className="form-outline mb-4">
+                        <input type="password" value = {password} onChange={handleChangePassword} className="form-control" placeholder='Password'/>
+                    </div>
+
+                    <div className="form-outline mb-4">
+                        <input type="password" id="registerRepeatPassword" className="form-control" placeholder='Repeat password'/>
+                    </div>
+
+                    <button type="submit" className="btn btn-primary btn-block mb-3">Register</button>
+                    </form>
+                </div>
         </div>
     );
 }

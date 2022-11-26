@@ -6,16 +6,32 @@ body {
 #app nav
 {
     text-align: left;
+    margin-bottom: 3%;
+    margin-right: 3%;
+    margin-left: 3%;
+    border: 2px solid blueviolet;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
 }
 
 #app nav *
 {
     text-align: left;
- margin:10px; 
+    margin: 1%; 
+    width: 50%;
 }
 
+a, a:link, a:visited{
+    font-size: 20px;
+    color: rosybrown;
+}
+
+
 #auth {
-    width: 50%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
 
@@ -24,7 +40,7 @@ body {
 
 #register{
     width: 50%;
-    border: 2px solid ;
+    border: 2px solid;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;

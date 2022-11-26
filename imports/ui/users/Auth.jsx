@@ -19,10 +19,17 @@ export const Auth = () => {
     });
 
     return (
-        <div id ="auth">
-            <h1>Authentification</h1>
-            <Register />
-            <LogIn />
+        <div id="auth">
+            <div className="tab-content">
+                
+                <Register />
+
+                <h3 className="text-center">OR</h3>
+                
+                <LogIn />
+            </div>
+           
         </div>
+        
     );
 };
