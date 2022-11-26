@@ -38,7 +38,7 @@ export const LogIn = () => {
 
             <div id="login">  
                 <div className="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                    <h2>Login</h2>
+                    <h2 className="text-center">Login</h2>
                     
                     <form onSubmit={login} >
 

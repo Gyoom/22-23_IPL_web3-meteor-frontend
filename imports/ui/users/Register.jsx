@@ -36,7 +36,7 @@ export const Register = () => {
     return (
         <div id="register" >
             <div className="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                    <h2>Register</h2>
+                    <h2 className="text-center">Register</h2>
                     <form onSubmit={addUser}>
 
                     <div className="form-outline mb-4">
