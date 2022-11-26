@@ -33,6 +33,10 @@ async function insertRoom({ username, roomName }) { // ok
     await RoomsCollection.insertAsync({ username, roomName });
 }
 
+Meteor.publish('getAllRooms', function () { // ok
+    return RoomsCollection.find({});
+});
+
 // Messages Publish
 
 Meteor.publish('getAllMessagesFromARoom', function ({roomName}) { // ok
@@ -55,14 +59,34 @@ Meteor.startup(async () => {
         await Accounts.createUser({
             username: "Alfred", 
             email: "Alfred", 
-            password: "ABC"
+            password: "ABC",
+            profile: "admin"
         });
 
         await Accounts.createUser({
             username: "Max", 
             email: "Max", 
-            password: "ABC"
+            password: "ABC",
+            profile: "admin"
         });
+
+        await Accounts.createUser({
+            username: "Test",
+            email: "Test",
+            password: "Test",
+            profile: "user"
+        })
+
+        await insertRoom({
+            username: 'Test',
+            roomName: 'TestRoom'
+        })
+
+        await insertMember({
+            username: 'Test',
+            roomName: 'TestRoom',
+            pseudo: 'TestPseudo'
+        })
 
         await insertRoom({
             username: 'Alfred',
@@ -75,7 +99,6 @@ Meteor.startup(async () => {
         });
 
         await insertMember({
-
             username: 'Alfred',
             roomName: 'AlfredRoom',
             pseudo: 'AlfredPseudo',
@@ -113,7 +136,11 @@ Meteor.startup(async () => {
             text: 'i am alfred and it is not my room',
         });
 
-
+        await insertMessage ({
+            username: 'Test',
+            roomName: 'TestRoom',
+            text: 'Hell yeah'
+        });
 
     }
 });

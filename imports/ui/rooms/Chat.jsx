@@ -8,10 +8,16 @@ import { getRoomsOf } from '/imports/api/members';
 // Components :
 import { RoomChat } from './RoomChat';
 import { RoomSelect } from './RoomSelect';
+import { getAllRooms } from '../../api/rooms';
+import { isAdmin } from '../../api/users';
 
 export const Chat = () => {
     const [roomSelected, setRoomSelected] = useState("");
-    const rooms = getRoomsOf(Meteor.user()? Meteor.user().username : "");
+    const myRooms = getRoomsOf(Meteor.user()? Meteor.user().username : "");
+    allRooms = null;
+    if (isAdmin){
+        allRooms = getAllRooms();
+    }
     const navigate = useNavigate();
     const { actualUser }  = useContext(Context);
 
@@ -28,7 +34,7 @@ export const Chat = () => {
 
         <div id="chat" className="text-center">
             <h1 className="text-center" >Bienvenue {actualUser} !</h1>
-            <RoomSelect setRoomSelected={setRoomSelected} rooms = {rooms}/>  
+            <RoomSelect setRoomSelected={setRoomSelected} myRooms = {myRooms} allRooms = {allRooms} />  
             <RoomChat roomName={roomSelected}/>
         </div>
     ) 

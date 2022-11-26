@@ -53,4 +53,6 @@ getRoomsOf = function(username) { // ok
     });
 }
 
+
+
 export { joinARoom, isMemberOf, getRoomsOf };

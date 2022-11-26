@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { check } from 'meteor/check';
 import { useTracker } from 'meteor/react-meteor-data';
+import { get } from 'jquery';
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -57,7 +58,8 @@ usersAddOne = function(username, email, password) { // ok
     return Accounts.createUser({
         username: username, 
         email: email, 
-        password: password
+        password: password,
+        profile: "user"
     }, error => {
         if (error) {
             console.log('Error users.addOne :' + error);
@@ -71,6 +73,10 @@ getLoggedUser = function() { // ok
     Meteor.subscribe('getAllUsers');
     return Meteor.user();
 },
+
+isAdmin = function() {
+    return getLoggedUser().profile == "admin";
+}
 
 getUserByName = function(username) { // ok
     return useTracker(() => {
@@ -88,4 +94,4 @@ getAllUsers = function() { // ok
     });
 }
     
-export { usersLogin, usersLogout, usersAddOne, getLoggedUser, getUserByName, getAllUsers };
+export { isAdmin, usersLogin, usersLogout, usersAddOne, getLoggedUser, getUserByName, getAllUsers };

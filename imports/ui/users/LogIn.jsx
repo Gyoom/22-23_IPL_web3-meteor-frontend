@@ -21,7 +21,9 @@ export const LogIn = () => {
         event.preventDefault()
         await usersLogin(email, password);
 
-        pickActualUser(getLoggedUser().username);
+        console.log("Email : " + email + " - PWD : " + password)
+
+        await pickActualUser(getLoggedUser().username);
         navigate('/');
        
     }

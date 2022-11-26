@@ -1,6 +1,7 @@
 // Dependancies :
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
+import { useTracker } from 'meteor/react-meteor-data';
 // Calls to server :
 import { MembersCollection } from '/imports/api/members'; // ne pas supprimer !!!
 import { UsersCollection } from './users'; // ne pas supprimer !!!
@@ -34,4 +35,12 @@ createARoom = function(userId, name, pseudo) {
   joinARoom(userId, roomId, pseudo);
 }
 
-export { createARoom };
+getAllRooms = function() {
+  return useTracker(() => {
+      Meteor.subscribe('getAllRooms')
+      return RoomsCollection.find().fetch();
+  })
+}
+
+
+export { getAllRooms, createARoom };
