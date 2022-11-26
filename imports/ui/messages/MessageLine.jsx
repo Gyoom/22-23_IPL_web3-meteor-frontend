@@ -15,7 +15,7 @@ export const MessageLine = ({ username, date, text, id }) => {
     return (
       <div className="messages">
         <form id = {id} onSubmit={deleteMessage}>
-          <button id = {id} type='submit'><FcFullTrash /></button><p>{username} ({date}) : <br /> -- {text}</p>
+          <button className = "btn btn-light" id = {id} type='submit'><FcFullTrash /></button> - {username} ({date}) : <br /><p className="marge">--  {text}</p>
         </form>
       </div>
   

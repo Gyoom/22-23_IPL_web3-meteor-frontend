@@ -19,27 +19,29 @@ export const RoomSelect = ({ setRoomSelected, myRooms, allRooms }) => {
     }else if (  !isAdmin()){
         return (
             <div id="roomSelected">
-                <h3>Choisissez une room : </h3>
-                 <select onChange={(e) => handleChange(e)}>
-                    <option value="">-- please chose a room --</option>
-                    {myRooms.map(room => <option value={room.roomName}>{room.roomName}</option>)}
-                </select>
+                <div id="select" className='text-center'>
+                    <h3>Choisissez une room : </h3>
+                    <select className="custom-select" onChange={(e) => handleChange(e)}>
+                        <option value="">-- please chose a room --</option>
+                        {myRooms.map(room => <option value={room.roomName}>{room.roomName}</option>)}
+                    </select>
+                </div>
             </div>
         
         )
     }else {
         return(
             <div id="roomSelected">
-                <div>
-                    <h3>Choisissez une de vos myRooms : </h3>
-                    <select onChange={(e) => handleChange(e)}>
+                <div id="select" >
+                    <h3 className='text-center'>Choisissez une de vos rooms : </h3>
+                    <select className="custom-select" onChange={(e) => handleChange(e)}>
                         <option value="">-- please chose a room --</option>
                         {myRooms.map(room => <option value={room.roomName}>{room.roomName}</option>)}
                     </select>
                 </div>
-                <div>
+                <div id="select" className='text-center'>
                     <h3>Toutes les rooms ouvertes : </h3>
-                    <select onChange={(e) => handleChange(e)}>
+                    <select className="custom-select" onChange={(e) => handleChange(e)}>
                         <option value="">-- please chose a room --</option>
                         {allRooms.map(room => <option value={room.roomName}>{room.roomName}</option>)}
                     </select>
