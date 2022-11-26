@@ -37,6 +37,7 @@ Meteor.publish('getAllRooms', function () { // ok
     return RoomsCollection.find({});
 });
 
+
 // Messages Publish
 
 Meteor.publish('getAllMessagesFromARoom', function ({roomName}) { // ok
@@ -50,6 +51,9 @@ async function insertMessage({ username, roomName, text }) { // ok
     await MessagesCollection.insertAsync({ username, roomName, text, createdAt: date });
 }
 
+Meteor.publish('deleteAMessage', function ({messageId}) {
+        MessagesCollection.remove({_id: messageId});
+});
 
 // Startup
 

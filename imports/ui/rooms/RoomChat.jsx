@@ -16,7 +16,7 @@ export const RoomChat = ({ roomName }) => {
                 <h3>Room name : {roomName != ""? roomName : " no room selected"}</h3>
                 <div id="messageChat">
                     {roomName == ""? <p>No room selected</p> : ""}
-                    {messages.map(message => <MessageLine username={message.username} date={message.createdAt} text={message.text}/>)}
+                    {messages.map(message => <MessageLine username={message.username} date={message.createdAt} text={message.text} id={message._id}/>)}
                 </div>
                 <MessageForm  roomName={roomName}/>
             </div>
