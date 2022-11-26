@@ -26,8 +26,8 @@ export const Chat = () => {
 
     return (
 
-        <div id="chat">
-            <h1>Chat de l'utilisateur : {actualUser}</h1>
+        <div id="chat" className="text-center">
+            <h1 className="text-center" >Bienvenue {actualUser} !</h1>
             <RoomSelect setRoomSelected={setRoomSelected} rooms = {rooms}/>  
             <RoomChat roomName={roomSelected}/>
         </div>

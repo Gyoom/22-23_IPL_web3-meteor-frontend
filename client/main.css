@@ -6,10 +6,10 @@ body {
 #app nav
 {
     text-align: left;
-    margin-bottom: 3%;
-    margin-right: 3%;
-    margin-left: 3%;
-    border: 2px solid blueviolet;
+    margin-bottom: 1%;
+    margin-right: 10%;
+    margin-left: 10%;
+    border: 2px solid #FFCCE1;
     margin-top: 10px;
     border-radius: 15px;
     padding-left: 15px;
@@ -26,7 +26,7 @@ body {
 
 a, a:link, a:visited{
     font-size: 20px;
-    color: rosybrown;
+    color: #FFCCE1;
 }
 
 
@@ -40,11 +40,13 @@ a, a:link, a:visited{
 
 #register{
     width: 50%;
-    border: 2px solid;
+    border: 2px solid #E0D7FF;
+    box-shadow: 15px -16px #CCF1FF;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
-    border-radius: 15px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    border-radius: 60px;
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
@@ -57,11 +59,13 @@ a, a:link, a:visited{
 
 #login{
     width: 50%;
-    border: 2px solid ;
+    border: 2px solid #E0D7FF;
+    box-shadow: 15px -16px #CCF1FF;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
-    border-radius: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 60px;
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
@@ -72,32 +76,30 @@ a, a:link, a:visited{
     margin: 5px;
 }
 
-#chat {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-
-
-}
 #roomSelected {
-    width: 90%;
-    border: 2px solid ;
+    width: 60%;
+    border: 2px solid #E0D7FF;
+    box-shadow: 15px -16px #CCF1FF;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
-    border-radius: 15px;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    border-radius: 60px;
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
 }
 
 #roomChat {
-    width: 90%;
-    border: 2px solid ;
+    width: 60%;
+    height: 50%;
+    border: 2px solid #E0D7FF;
+    box-shadow: 15px -16px #CCF1FF;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
-    border-radius: 15px;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    border-radius: 60px;
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
@@ -105,6 +107,10 @@ a, a:link, a:visited{
 
 #messageChat {
     width: 90%;
+    height: 400px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-align: end;
     border: 2px solid ;
     margin-left: auto;
     margin-right: auto;
@@ -127,5 +133,15 @@ a, a:link, a:visited{
     margin-top: 10px;
     border-radius: 15px;
     padding: 15px;
+}
+
+h1 {
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+h3 {
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 
