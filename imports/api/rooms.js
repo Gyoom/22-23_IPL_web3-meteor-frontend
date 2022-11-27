@@ -10,7 +10,7 @@ import { getRoomsOf } from './members';
 export const RoomsCollection = new Mongo.Collection('rooms');
 
 RoomsCollection.allow({
-    insert: function(username, roomName) {
+    insert: function(usernameFondator, roomName) {
       return true;
     }
 });

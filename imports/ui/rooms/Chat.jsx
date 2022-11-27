@@ -6,7 +6,6 @@ import { Context } from "../contexts/ActualUserContext";
 import { RoomChat } from './RoomChat';
 import { RoomInvite } from './RoomInvite';
 import { RoomCreate } from './RoomCreate'
-import { getLoggedUser } from '../../api/users';
 import { Test } from '../Test';
 
 export const Chat = () => {
@@ -26,7 +25,7 @@ export const Chat = () => {
     return (
 
         <div id="chat">
-            <h1>Chat de l'utilisateur : {getLoggedUser()? getLoggedUser().username : ""}</h1>
+            <h1>Chat de l'utilisateur : {actualUser? actualUser : ""}</h1>
             <RoomCreate/>
             <RoomInvite /> 
             <RoomChat />

@@ -1,8 +1,8 @@
 // Dependancies :
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Context } from "../contexts/ActualUserContext";
 // calls to server :
-import { getLoggedUser } from '../../api/users';
 import { createARoom } from '../../api/rooms';
 
 
@@ -11,12 +11,12 @@ import { createARoom } from '../../api/rooms';
 export const RoomCreate = () => {
     const [roomName, setRoomName] = useState('');
     const navigate = useNavigate();
-    const user = getLoggedUser();
+    const { actualUser }  = useContext(Context);
     
     
     const createRoom = ( event ) => {
         event.preventDefault();
-        createARoom(user.username, roomName);
+        createARoom(actualUser, roomName);
         navigate('/');
 
         

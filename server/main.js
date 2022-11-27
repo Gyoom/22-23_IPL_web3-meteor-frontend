@@ -41,8 +41,8 @@ Meteor.publish('getRoomById', function ({roomId}) {
     return RoomsCollection.find({_id: roomId});
 });
 
-async function insertRoom({ username, roomName }) { // ok
-    await RoomsCollection.insertAsync({ username, roomName });
+async function insertRoom({ usernameFondator, roomName }) { // ok
+    await RoomsCollection.insertAsync({ usernameFondator, roomName });
 }
 
 // Messages Publish
@@ -83,7 +83,7 @@ Meteor.startup(async () => {
 
         await insertRoom({
             usernameFondator: 'Max',
-            roomName: 'AlfredRoom',
+            roomName: 'MaxRoom',
         });
 
         await insertMember({

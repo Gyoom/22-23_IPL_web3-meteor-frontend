@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 // Components
 import { Register } from './Register';
 import { LogIn } from './LogIn';
-import { Test } from '../Test';
-import { getLoggedUser } from '../../api/users';
+import { Test } from '../Test';;
 
 
 export const Auth = () => {
@@ -15,7 +14,7 @@ export const Auth = () => {
 
     useEffect(() => {
         if (actualUser !="Aucun") { // TODO user persistent, pendant un refresh, ne detecte pas l'user, apres oui
-            console.log("user already login : ", getLoggedUser().username);
+            console.log("user already login : ", actualUser);
             navigate('/');
         }
     });

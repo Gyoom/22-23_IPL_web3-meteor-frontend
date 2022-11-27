@@ -53,7 +53,7 @@ getRoomsOf = function(username) { // ok
     check(username, String);
     return useTracker(() => {
         Meteor.subscribe('getRoomsOf', {username:username});
-        return MembersCollection.find().fetch();
+        return MembersCollection.find({username: username}).fetch();
     });
 }
 

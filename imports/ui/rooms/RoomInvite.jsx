@@ -2,9 +2,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 // Calls to server : 
-import { getRoomsOf, joinARoom } from '/imports/api/members';
+import { joinARoom } from '/imports/api/members';
 import { getAllUsers } from '/imports/api/users';
-import { getLoggedUser } from '../../api/users';
 import { getAllRooms } from '../../api/rooms';
 // Components :
 import { RoomSelect } from './RoomSelect';
@@ -15,7 +14,6 @@ import { UserSelect } from '../users/UserSelect';
 export const RoomInvite = () => {
     const [userSelected, setUserSelected] = useState("");
     const [roomSelected, setRoomSelected] = useState("");
-    const rooms = getRoomsOf(getLoggedUser() ? getLoggedUser().username : "");
     const users = getAllUsers();
     const navigate = useNavigate();
     const allRooms = getAllRooms();
@@ -37,7 +35,7 @@ export const RoomInvite = () => {
     return (
         <div id="roomInvite">
             <h3>Invite un utilisteur dans une de tes rooms : </h3>
-            <RoomSelect setRoomSelected={setRoomSelected} rooms = {rooms}/> 
+            <RoomSelect setRoomSelected={setRoomSelected} /> 
             <UserSelect setUserSelected={setUserSelected} users = {users}/>
             <form onSubmit={inviteToRoom}>
                 <label>Invite cet utilisateur dans la room choisie.</label><br />
