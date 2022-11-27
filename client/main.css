@@ -1,1 +1,175 @@
+body {
+    text-align: center;
+    margin: 0px;
+}
 
+#app nav
+{
+    text-align: left;
+    margin-bottom: 1%;
+    margin-right: 10%;
+    margin-left: 10%;
+    border: 2px solid #FFCCE1;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+#app nav *
+{
+    text-align: left;
+    margin: 1%; 
+    width: 50%;
+}
+
+a, a:link, a:visited{
+    font-size: 20px;
+    color: #FFCCE1;
+}
+
+
+#auth {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+#register{
+    width: 50%;
+    border: 2px solid #E0D7FF;
+    box-shadow: 15px -16px #CCF1FF;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    border-radius: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+#register *{
+
+    margin: 5px;
+}
+
+#login{
+    width: 50%;
+    border: 2px solid #E0D7FF;
+    box-shadow: 15px -16px #CCF1FF;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+#login *{
+
+    margin: 5px;
+}
+
+#chatCategory {
+    width: 60%;
+    border: 2px solid #E0D7FF;
+    box-shadow: 15px -16px #CCF1FF;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    border-radius: 60px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#subChatCategory {
+    width: 90%;
+    border: 2px solid #FFCCE1;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 60px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#subSubChatCategory{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+}
+
+
+#messageChat {
+    width: 90%;
+    height: 350px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-align: end;
+    border: 2px solid #FFCCE1 ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 60px;
+    padding: 15px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+    }
+
+.messages {
+    text-align: left;
+    border: 2px solid #FFCCE1 ;
+    margin-top: 5px;
+    border-radius: 30px;
+    padding-left: 10px;
+    padding-top: 10px;
+    background-color: #FAFFC7;
+}
+
+h1 {
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+h3 {
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+.marge {
+    margin-left: 50px;
+}
+
+#select {
+    width: 50%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+button{
+    margin-left: 20px;
+}
+
+label {
+    font-size: 25px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+#newMessage{
+    font-size: 17px;
+}
