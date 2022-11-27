@@ -16,7 +16,6 @@ export const RoomInvite = () => {
     const [roomSelected, setRoomSelected] = useState("");
     const users = getAllUsers();
     const navigate = useNavigate();
-    const allRooms = getAllRooms();
     
     const inviteToRoom = ( event ) => {
         event.preventDefault();
