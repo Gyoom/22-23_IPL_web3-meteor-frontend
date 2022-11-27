@@ -43,9 +43,9 @@ export const LogIn = () => {
         <div id="login">
             <form onSubmit={login}>         
                 <label>Log In :</label><br />
-                <input type='text' placeholder='type your email' value = {email} onChange={handleChangePseudo}></input><br />
-                <input type='password' placeholder='type your password' value = {password} onChange={handleChangePassword}></input><br />
-                <button type='submit'>Log In</button>
+                <input type='text' placeholder='type your email' className = "form-control" value = {email} onChange={handleChangePseudo}></input><br />
+                <input type='password' placeholder='type your password' className="form-control" value = {password} onChange={handleChangePassword}></input><br />
+                <button type='submit' class="btn btn-primary" >Log In</button>
             </form>
         </div>
     );

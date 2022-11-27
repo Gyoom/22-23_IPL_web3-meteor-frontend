@@ -14,14 +14,16 @@ export const App = () => {
   return (
     <BrowserRouter>  
       <div id="app">
-       <nav>
-         <Link to="/">Chat</Link>    
-          <Link to="/login">{actualUser == "Aucun" ? "Auth" : actualUser} </Link>
-          <Link to="/logout" onClick={async () => {
-               await usersLogout();
-               pickActualUser("Aucun");
-           }}>Logout </Link>
-      </nav>
+      {getLoggedUser() == null ? <div></div> : 
+        <nav>
+          <Link to="/">Chat</Link>    
+            <Link to="/login">{actualUser == "Aucun" ? "Auth" : actualUser} </Link>
+            <Link to="/logout" onClick={async () => {
+                await usersLogout();
+                pickActualUser("Aucun");
+            }}>Logout </Link>
+        </nav>
+      }
       <Routes>  
             <Route path='/' element={< Chat />}></Route>  
             <Route path='/login' element={< Auth />}></Route>

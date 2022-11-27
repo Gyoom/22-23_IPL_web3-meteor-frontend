@@ -21,7 +21,7 @@ export const Auth = () => {
 
     return (
         <div id ="auth">
-            <h1>Authentification</h1>
+            <h1 className='text-center'>Authentification</h1>
             <Register />
             <LogIn />
             <Test />
