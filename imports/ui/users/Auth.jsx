@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 // Components
 import { Register } from './Register';
 import { LogIn } from './LogIn';
-import { Test } from '../Test';;
 
 
 export const Auth = () => {
@@ -13,7 +12,7 @@ export const Auth = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (actualUser !="Aucun") { // TODO user persistent, pendant un refresh, ne detecte pas l'user, apres oui
+        if (actualUser !="Aucun") {
             console.log("user already login : ", actualUser);
             navigate('/');
         }
@@ -24,7 +23,6 @@ export const Auth = () => {
             <h1>Authentification</h1>
             <Register />
             <LogIn />
-            <Test />
         </div>
     );
 };

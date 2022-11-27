@@ -9,58 +9,92 @@ import { MembersCollection } from '/imports/api/members';
 
 // Member Publish
 
+/**
+ * Allows interactions on all objects in the Members collection.
+ */
 Meteor.publish('getAllMembers', function () {
     return MembersCollection.find({});
 });
 
-Meteor.publish('isMemberOf', function ({username, roomName}) { // ok
+/**
+ * Authorizes interactions on objects having the username and roomName passed as param as attributs of the Members collection.
+ */
+Meteor.publish('isMemberOf', function ({username, roomName}) {
     return MembersCollection.find({username: username, roomName: roomName});
 });
 
-Meteor.publish('getRoomsOf', function ({username}) { // ok
+/**
+ * Authorizes interactions on objects having the username passed as param as attibut of the Members collection.
+ */
+Meteor.publish('getRoomsOf', function ({username}) {
     return MembersCollection.find({username: username});
 });
 
-async function insertMember({ username, roomName, pseudo }) { // ok
-    await MembersCollection.insertAsync({ username, roomName, pseudo });
-}
-
 // User Publish
 
-Meteor.publish('getAllUsers', function () { // ok
+/**
+ * Allows interactions on all objects in the Users collection.
+ */
+Meteor.publish('getAllUsers', function () {
     return Meteor.users.find({});
 });
 
 // Rooms Publish
 
+/**
+ * Allows interactions on all objects in the Rooms collection.
+ */
 Meteor.publish('getAllRooms', function () {
     return RoomsCollection.find({});
 });
 
+/**
+ * Authorizes interactions on objects having the roomId passed as param as attribut of the Rooms collection.
+ */
 Meteor.publish('getRoomById', function ({roomId}) {
     return RoomsCollection.find({_id: roomId});
 });
 
-async function insertRoom({ usernameFondator, roomName }) { // ok
-    await RoomsCollection.insertAsync({ usernameFondator, roomName });
-}
-
 // Messages Publish
 
-Meteor.publish('getAllMessagesFromARoom', function ({roomName}) { // ok
+/**
+ * Authorizes interactions on objects having the roomName passed as param of the Messages collection.
+ */
+Meteor.publish('getAllMessagesFromARoom', function ({roomName}) {
     return MessagesCollection.find({roomName:roomName});
     
 });
 
-async function insertMessage({ username, roomName, text }) { // ok
+// inserts function :
+
+/**
+ * inserts a new room object into the Rooms collection.
+ */
+ async function insertRoom({ usernameFondator, roomName }) {
+    await RoomsCollection.insertAsync({ usernameFondator, roomName });
+}
+
+/**
+ * inserts a new message object into the Messages collection.
+ */
+ async function insertMessage({ username, roomName, text }) {
     const m = moment(new Date());
     const date = m.format('DD-MM-YYYY[, ]HH:mm:ss');
     await MessagesCollection.insertAsync({ username, roomName, text, createdAt: date });
 }
 
+/**
+ * inserts a new member object into the Members collection.
+ */
+async function insertMember({ username, roomName, pseudo }) {
+    await MembersCollection.insertAsync({ username, roomName, pseudo });
+}
 
-// Startup
 
+/**
+ * Startup :
+ * initializes the following objects in the db if it is empty.
+ */
 Meteor.startup(async () => {
     if (await RoomsCollection.find().countAsync() === 0) {
 

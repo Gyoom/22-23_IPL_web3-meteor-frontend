@@ -7,15 +7,28 @@ import { check } from 'meteor/check';
 import { getLoggedUser } from './users';
 import { checkRoomExist } from './rooms';
 
+/**
+ * Initializes the members collection in the Meteor db (MongoDB)
+ * when the application is launched if it does not already exist.
+ */
 export const MembersCollection = new Mongo.Collection('members');
 
+/**
+ * Allow insert operation on members collection from client.
+ */
 MembersCollection.allow({
     insert: function(username, roomName) {
       return true;
     }
 });
-
-joinARoom = function(username, roomName) { // ok
+/**
+ * check that a current user is connected, 
+ * that the room whose name was given to him exists, 
+ * that the user whose name was given to him is not already a member of the db 
+ * then insert a new member object in the collection Members. returns an error 
+ * message in the console in case of a problem.
+ */
+joinARoom = function(username, roomName) {
     const actualUser = getLoggedUser();
 
     if (actualUser == null) {
@@ -41,15 +54,22 @@ joinARoom = function(username, roomName) { // ok
     });
 }
 
-
-isMemberOf = function(username, roomName) { // ok 
+/** 
+ * returns a boolean that indicates if there is an object in the member db 
+ * with the same attributes as provided in param.
+ */
+isMemberOf = function(username, roomName) {
     check(username, String);
     check(roomName, String);
     Meteor.subscribe('getAllMembers');
     return MembersCollection.find({username: username, roomName : roomName }).fetch().length > 0;
 }
 
-getRoomsOf = function(username) { // ok 
+/**
+ * returns an array containing all the objects of the member table whose 
+ * username attribute corresponds to that provided in param.
+ */
+getRoomsOf = function(username) {
     check(username, String);
     return useTracker(() => {
         Meteor.subscribe('getRoomsOf', {username:username});

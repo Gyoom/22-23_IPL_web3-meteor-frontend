@@ -6,7 +6,6 @@ import { Context } from "../contexts/ActualUserContext";
 import { RoomChat } from './RoomChat';
 import { RoomInvite } from './RoomInvite';
 import { RoomCreate } from './RoomCreate'
-import { Test } from '../Test';
 
 export const Chat = () => {
     const { actualUser }  = useContext(Context);
@@ -14,22 +13,19 @@ export const Chat = () => {
 
 
     useEffect(() => {
-        if (actualUser == "Aucun") { // TODO user persistent, pendant un refresh, ne detecte pas l'user, apres oui
+        if (actualUser == "Aucun") {
             console.log("no user login");
            navigate('/login');
-        } else {
         }
     });
 
 
     return (
-
         <div id="chat">
             <h1>Chat de l'utilisateur : {actualUser? actualUser : ""}</h1>
             <RoomCreate/>
             <RoomInvite /> 
             <RoomChat />
-            <Test />
         </div>
     ) 
 }
