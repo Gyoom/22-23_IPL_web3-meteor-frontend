@@ -27,12 +27,12 @@ export const RoomCreate = () => {
     }
 
     return (
-        <div id="createARoom">
-            <h3>Create a room : </h3>
-            <form onSubmit={createRoom}>
+        <div id="chatCategory">
+            <h3>Créer une room : </h3>
+            <form onSubmit={createRoom} id="subChatCategory">
                 <label>Ajout d'une room : </label><br />
-                <input type='text' placeholder='Nom de la room' value = {roomName} onChange={handleChangeName}></input><br />
-                <button type='submit'>créer la room</button>
+                <input type='text' placeholder='Nom de la room' className="form-control" value = {roomName} onChange={handleChangeName}></input><br />
+                <button type='submit' className="btn btn-primary">Créer la room</button>
             </form>
         </div>
     );

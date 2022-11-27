@@ -65,6 +65,13 @@ Meteor.publish('getAllMessagesFromARoom', function ({roomName}) {
     
 });
 
+/**
+ * Authorizes interactions on objects having the roomId passed as param of the Messages collection.
+ */
+Meteor.publish('deleteAMessage', function ({messageId}) {
+    MessagesCollection.remove({_id: messageId});
+});
+
 // inserts function :
 
 /**
@@ -91,6 +98,7 @@ async function insertMember({ username, roomName, pseudo }) {
 }
 
 
+
 /**
  * Startup :
  * initializes the following objects in the db if it is empty.
@@ -101,13 +109,15 @@ Meteor.startup(async () => {
         await Accounts.createUser({
             username: "Alfred", 
             email: "Alfred", 
-            password: "ABC"
+            password: "ABC",
+            profile: "admin"
         });
 
         await Accounts.createUser({
             username: "Max", 
             email: "Max", 
-            password: "ABC"
+            password: "ABC",
+            profile: "user"
         });
 
         await insertRoom({

@@ -20,11 +20,10 @@ export const MessageForm = ({ roomName }) => {
     }
 
     return (
-        <div id="messageForm">
-            <form onSubmit={send}>             
-                <label>New Message : </label>
-                <input type='text' placeholder='type ...' value = {text} onChange={handleChangeText}></input>
-                <button type='submit'>Send</button>
+        <div id="subChatCategory">
+            <form onSubmit={send}>
+                <input type='text' className="form-control" placeholder='type ...' value = {text} onChange={handleChangeText}></input>
+                <button type='submit' className="btn text-center">Send</button>
             </form>
         </div>
     );

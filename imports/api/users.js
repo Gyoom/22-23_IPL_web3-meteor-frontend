@@ -73,7 +73,8 @@ usersAddOne = function(username, email, password) {
     return Accounts.createUser({
         username: username, 
         email: email, 
-        password: password
+        password: password,
+        profile: "user"
     }, error => {
         if (error) {
             console.log('Error users.addOne :' + error);
@@ -90,16 +91,27 @@ getLoggedUser = function() {
     Meteor.user();
     return Meteor.user();
 },
+
+/**
+ * returns a boolean indicating whether the actual useris a admin or not.
+ */
+isAdmin = function() {
+    return getLoggedUser().profile == "admin";
+},
+
+
 /**
  * returns all objects from the Users 
  * collection of the Account dependency of 
  * Meteor and present in MongoDB.
  */
-getAllUsers = function() {
+getAllUsers = function() { // ok 
     return useTracker(() => {
         Meteor.subscribe('getAllUsers');
         return Meteor.users.find().fetch();
     });
 }
+
+
     
-export { usersLogin, usersLogout, usersAddOne, getLoggedUser, getAllUsers };
+export { isAdmin, usersLogin, usersLogout, usersAddOne, getLoggedUser, getAllUsers };

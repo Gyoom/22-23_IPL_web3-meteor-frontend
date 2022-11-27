@@ -67,8 +67,16 @@ getAllMessagesFromARoom = function(roomName) {
         return MessagesCollection.find({roomName:roomName}).fetch();
     });
 }
+/**
+ * delete all message from the Messages Collection Whoose attribut messageId match
+ * with the param messageId.
+ */
+deleteAMessage = function(messageId) {
+    Meteor.subscribe('deleteAMessage', {messageId});
+    console.log("deleted")
+}
 
-export { SendAMessage, getAllMessagesFromARoom };
+export { SendAMessage, getAllMessagesFromARoom, deleteAMessage };
 
 
 

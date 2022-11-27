@@ -22,7 +22,7 @@ export const Chat = () => {
 
     return (
         <div id="chat">
-            <h1>Chat de l'utilisateur : {actualUser? actualUser : ""}</h1>
+            <h1 className="text-center">Chat de l'utilisateur : {actualUser? actualUser : ""}</h1>
             <RoomCreate/>
             <RoomInvite /> 
             <RoomChat />
