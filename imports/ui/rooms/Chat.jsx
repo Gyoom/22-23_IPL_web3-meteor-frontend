@@ -26,7 +26,7 @@ export const Chat = () => {
     return (
 
         <div id="chat">
-            <h1>Chat de l'utilisateur : {actualUser}</h1>
+            <h1>Chat de l'utilisateur : {getLoggedUser()? getLoggedUser().username : ""}</h1>
             <RoomCreate/>
             <RoomInvite /> 
             <RoomChat />

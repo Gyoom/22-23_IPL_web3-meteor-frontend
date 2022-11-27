@@ -15,8 +15,7 @@ export const App = () => {
     <BrowserRouter>  
       <div id="app">
        <nav>
-           <Link to="/">Chat</Link>   
- 
+         <Link to="/">Chat</Link>    
           <Link to="/login">{actualUser == "Aucun" ? "Auth" : actualUser} </Link>
           <Link to="/logout" onClick={async () => {
                await usersLogout();

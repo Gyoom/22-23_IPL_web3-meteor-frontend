@@ -13,7 +13,7 @@ export const UserSelect = ({ setUserSelected, users }) => {
             <h3>Choisissez un utilisateur : </h3>
              <select onChange={(e) => handleChange(e)}>
                 <option value="">-- please choose a user --</option>
-                {users.map(user => <option key={user.username} value={user.username}>{user.username}</option>)}
+                {users.map(user => <option value={user.username}>{user.username}</option>)}
             </select>
         </div>
     
