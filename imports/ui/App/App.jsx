@@ -14,10 +14,9 @@ export const App = () => {
   return (
     <BrowserRouter>  
       <div id="app">
-      {getLoggedUser() == null ? <div></div> : 
+      {actualUser == "Aucun" ? <div></div> : 
         <nav>
           <Link to="/">Chat</Link>    
-            <Link to="/login">{actualUser == "Aucun" ? "Auth" : actualUser} </Link>
             <Link to="/logout" onClick={async () => {
                 await usersLogout();
                 pickActualUser("Aucun");

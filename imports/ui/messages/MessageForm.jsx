@@ -21,12 +21,9 @@ export const MessageForm = ({ roomName }) => {
 
     return (
         <div id="subChatCategory">
-            <form onSubmit={send}>             
-                <label id="newMessage">New Message :  </label>
-                <div id="subSubChatCategory">
-                    <input type='text' placeholder='type ...' value = {text} onChange={handleChangeText}></input>
-                </div>
-                <button type='submit' className="btn btn-primary">Send</button>
+            <form onSubmit={send}>
+                <input type='text' className="form-control" placeholder='type ...' value = {text} onChange={handleChangeText}></input>
+                <button type='submit' className="btn text-center">Send</button>
             </form>
         </div>
     );
