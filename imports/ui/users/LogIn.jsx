@@ -19,6 +19,9 @@ export const LogIn = () => {
 
     async function login( event ) {
         event.preventDefault();
+        if (getLoggedUser() != null) {
+            await usersLogout();
+        }
         await usersLogin(email, password);
 
         pickActualUser(email);

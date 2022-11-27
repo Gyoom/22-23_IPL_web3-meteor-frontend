@@ -12,7 +12,7 @@ export const Test = () => {
     const test = ( event ) => {
         event.preventDefault()
        console.log("context : ", actualUser );
-       console.log("meteor : ", getLoggedUser() != null? getLoggedUser().username : "aucun");
+       console.log("meteor : ", getLoggedUser() != null? getLoggedUser().username : "Aucun user");
     }
 
 

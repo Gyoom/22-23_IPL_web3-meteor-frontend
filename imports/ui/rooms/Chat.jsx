@@ -10,15 +10,15 @@ import { getLoggedUser } from '../../api/users';
 import { Test } from '../Test';
 
 export const Chat = () => {
-    const navigate = useNavigate();
     const { actualUser }  = useContext(Context);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
-        if (getLoggedUser() == null) {
+        if (actualUser == "Aucun") { // TODO user persistent, pendant un refresh, ne detecte pas l'user, apres oui
+            console.log("no user login");
            navigate('/login');
         } else {
-            console.log("user login : ", actualUser);
         }
     });
 

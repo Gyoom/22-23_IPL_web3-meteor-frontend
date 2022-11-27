@@ -14,8 +14,8 @@ export const Auth = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (getLoggedUser() != null) {
-            console.log("user already login : ", actualUser);
+        if (actualUser !="Aucun") { // TODO user persistent, pendant un refresh, ne detecte pas l'user, apres oui
+            console.log("user already login : ", getLoggedUser().username);
             navigate('/');
         }
     });
