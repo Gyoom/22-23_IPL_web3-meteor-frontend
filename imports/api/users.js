@@ -21,16 +21,15 @@ usersLogin = async function(email, password) { // ok
     Meteor.loginWithPassword(email, password, error => {
         if (error) {
             console.log('Error users.login :' + error);
-            return;
+            return error;
         }
         console.log('users.login succes');
     });
     
      await sleep(100);
-     console.log("test");
 },
 
-usersLogout = function() { // ok
+usersLogout = async function() { // ok
     if (getLoggedUser() == null) {
         console.log ('aucun utilisateur actuellement connecté');
         return;
@@ -42,6 +41,7 @@ usersLogout = function() { // ok
         }
         console.log('users.logout succes');
     });
+    await sleep(100);
 },
 
 usersAddOne = function(username, email, password) { // ok
@@ -68,16 +68,16 @@ usersAddOne = function(username, email, password) { // ok
 },    
 
 getLoggedUser = function() { // ok
-    Meteor.subscribe('getAllUsers');
+    Meteor.user();
     return Meteor.user();
 },
 
-getUserByName = function(username) { // ok
+getUserByName = function(username) {
     return useTracker(() => {
-    check(unsername, String);
-    Meteor.subscribe('getAllUsers');
-    return Meteor.users.find({username:username}).fetch();
-    //.collection._docs._map;
+        check(unsername, String);
+        Meteor.subscribe('getAllUsers');
+        return Meteor.users.find({username:username}).fetch();
+        //.collection._docs._map;
     });
 }
 

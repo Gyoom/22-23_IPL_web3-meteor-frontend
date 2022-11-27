@@ -1,29 +1,31 @@
 // Dependancies :
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
+import { useTracker } from 'meteor/react-meteor-data';
 // Calls to server :
-import { MembersCollection } from '/imports/api/members'; // ne pas supprimer !!!
-import { UsersCollection } from './users'; // ne pas supprimer !!!
+import { getLoggedUser } from './users';
+import { getRoomsOf } from './members';
 
 export const RoomsCollection = new Mongo.Collection('rooms');
 
 RoomsCollection.allow({
-    insert: function(userId, roomId, pseudo) {
+    insert: function(username, roomName) {
       return true;
     }
 });
 
-createARoom = function(userId, name, pseudo) {
-  const actualUser = usersGetCurrent();
+createARoom = function(username, roomName) {
+  const actualUser = getLoggedUser();
   if (actualUser == null) {
       console.log ('Vous devez être connecté');
       return;
   }
 
-  check(userId, String);
-  check(name, String);
+  check(username, String);
+  check(roomName, String);
 
-  const roomId = RoomsCollection.insert({ userId, name }, error => {
+  const roomId = RoomsCollection.insert({ usernameFondator: username, roomName: roomName }, error => {
       if (error) {
           console.log('Error createARoom.RoomsCollection.insert :' + error);
           return;
@@ -31,7 +33,21 @@ createARoom = function(userId, name, pseudo) {
       console.log('createARoom succes');
   });
 
-  joinARoom(userId, roomId, pseudo);
+  const room = RoomsCollection.findOne(roomId);
+
+  joinARoom(username, room.roomName);
 }
 
-export { createARoom };
+checkRoomExist = function(roomName) {
+  check(roomName, String);
+  Meteor.subscribe('getAllRooms');
+  RoomsCollection.find({}).fetch();
+  return RoomsCollection.find({roomName : roomName }).fetch().length > 0;
+}
+
+getAllRooms = function() { // ok 
+  Meteor.subscribe('getAllRooms');
+  return RoomsCollection.find({}).fetch();
+}
+
+export { createARoom, checkRoomExist, getAllRooms };

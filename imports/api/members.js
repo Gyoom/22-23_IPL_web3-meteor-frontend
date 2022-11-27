@@ -4,30 +4,35 @@ import { Mongo } from 'meteor/mongo';
 import { useTracker } from 'meteor/react-meteor-data';
 import { check } from 'meteor/check';
 // Calls to server : :
-import { UsersCollection } from './users'; // ne pas supprimer !!!
+import { getLoggedUser } from './users';
+import { checkRoomExist } from './rooms';
 
 export const MembersCollection = new Mongo.Collection('members');
 
 MembersCollection.allow({
-    insert: function(userId, roomId, pseudo) {
+    insert: function(username, roomName) {
       return true;
     }
 });
 
-joinARoom = function(userId, roomId, pseudo) { // ok
-    const actualUser = usersGetCurrent();
+joinARoom = function(username, roomName) { // ok
+    const actualUser = getLoggedUser();
+
     if (actualUser == null) {
         console.log ('Vous devez être connecté');
         return;
-    } else if (actualUser != userId) {
-        console.log('vous ne pouvez pas faire rejoindre une room à un autre user !');
+    } else if (!checkRoomExist(roomName)) {
+        console.log('la room n existe pas');
+        return;
+    } else if (isMemberOf(username, roomName)) {
+        console.log('L utilisateur est déjà membre de cette room');
+        return;
     }
 
-    check(userId, String);
-    check(roomId, String);
-    check(pseudo, String);
+    check(username, String);
+    check(roomName, String);
 
-    return MembersCollection.insert({ userId, roomId, pseudo }, error => {
+    return MembersCollection.insert({ username: username, roomName: roomName }, error => {
         if (error) {
             console.log('Error joinARoom.MembersCollection.insert :' + error);
             return;
@@ -36,19 +41,18 @@ joinARoom = function(userId, roomId, pseudo) { // ok
     });
 }
 
-isMemberOf = function(userId, roomId) { // ok 
-    check(userId, String);
-    check(roomId, String);
-    return useTracker(() => {
-        Meteor.subscribe('isMemberOf', {userId:userId , roomId:roomId})
-        return MembersCollection.find().fetch().length > 0;
-    });
+
+isMemberOf = function(username, roomName) { // ok 
+    check(username, String);
+    check(roomName, String);
+    Meteor.subscribe('getAllMembers');
+    return MembersCollection.find({username: username, roomName : roomName }).fetch().length > 0;
 }
 
 getRoomsOf = function(username) { // ok 
     check(username, String);
     return useTracker(() => {
-        Meteor.subscribe('getRoomsOf', {username:username})
+        Meteor.subscribe('getRoomsOf', {username:username});
         return MembersCollection.find().fetch();
     });
 }

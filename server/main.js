@@ -9,6 +9,10 @@ import { MembersCollection } from '/imports/api/members';
 
 // Member Publish
 
+Meteor.publish('getAllMembers', function () {
+    return MembersCollection.find({});
+});
+
 Meteor.publish('isMemberOf', function ({username, roomName}) { // ok
     return MembersCollection.find({username: username, roomName: roomName});
 });
@@ -28,6 +32,14 @@ Meteor.publish('getAllUsers', function () { // ok
 });
 
 // Rooms Publish
+
+Meteor.publish('getAllRooms', function () {
+    return RoomsCollection.find({});
+});
+
+Meteor.publish('getRoomById', function ({roomId}) {
+    return RoomsCollection.find({_id: roomId});
+});
 
 async function insertRoom({ username, roomName }) { // ok
     await RoomsCollection.insertAsync({ username, roomName });
@@ -65,12 +77,12 @@ Meteor.startup(async () => {
         });
 
         await insertRoom({
-            username: 'Alfred',
+            usernameFondator: 'Alfred',
             roomName: 'AlfredRoom',
         });
 
         await insertRoom({
-            username: 'Max',
+            usernameFondator: 'Max',
             roomName: 'AlfredRoom',
         });
 
@@ -78,21 +90,18 @@ Meteor.startup(async () => {
 
             username: 'Alfred',
             roomName: 'AlfredRoom',
-            pseudo: 'AlfredPseudo',
         });
 
         await insertMember({
 
             username: 'Max',
             roomName: 'MaxRoom',
-            pseudo: 'MaxPseudo',
         });
 
         await insertMember({
 
             username: 'Alfred',
             roomName: 'MaxRoom',
-            pseudo: 'AlfredPseudo',
         });
 
         await insertMessage ({

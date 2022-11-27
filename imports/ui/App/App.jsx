@@ -1,9 +1,9 @@
 // Dependancies :
 import React, { useContext } from 'react';
-import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Context } from "../contexts/ActualUserContext";
 // Calls to server : 
-import { usersLogout } from '../../api/users';
+import { usersLogout, getLoggedUser } from '../../api/users';
 // Components : 
 import { Chat } from '../rooms/Chat';
 import { Auth } from '../users/Auth';
@@ -13,18 +13,16 @@ export const App = () => {
   
   return (
     <BrowserRouter>  
-      <div id="app">  
+      <div id="app">
        <nav>
            <Link to="/">Chat</Link>   
-          {actualUser == "Aucun"? 
-          <Link to="/login">{actualUser == "Aucun" ? "Auth" : actualUser} </Link> : 
-          <Link to="/logout" onClick={() => {
-              const navigate = useNavigate();
-               usersLogout();
+ 
+          <Link to="/login">{actualUser == "Aucun" ? "Auth" : actualUser} </Link>
+          <Link to="/logout" onClick={async () => {
+               await usersLogout();
                pickActualUser("Aucun");
-               navigate('/login');
-           }}>Logout </Link>}
-      </nav> 
+           }}>Logout </Link>
+      </nav>
       <Routes>  
             <Route path='/' element={< Chat />}></Route>  
             <Route path='/login' element={< Auth />}></Route>

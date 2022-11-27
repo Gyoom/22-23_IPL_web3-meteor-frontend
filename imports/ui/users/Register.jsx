@@ -15,7 +15,9 @@ export const Register = () => {
 
     const addUser = ( event ) => {
         event.preventDefault()
-        usersAddOne(pseudo, email, password);
+        if (usersAddOne(pseudo, email, password) == null) {
+            return;
+        }
         navigate('/');
         
     }

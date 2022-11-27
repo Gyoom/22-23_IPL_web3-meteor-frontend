@@ -18,10 +18,12 @@ export const LogIn = () => {
 
 
     async function login( event ) {
-        event.preventDefault()
+        event.preventDefault();
         await usersLogin(email, password);
 
-        pickActualUser(getLoggedUser().username);
+        pickActualUser(email);
+        setEmail("");
+        setPassword("");
         navigate('/');
        
     }

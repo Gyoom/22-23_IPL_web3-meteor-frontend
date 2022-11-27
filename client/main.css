@@ -63,6 +63,43 @@ body {
 
 
 }
+
+#createARoom {
+    width: 90%;
+    border: 2px solid ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+#roomInvite {
+    width: 90%;
+    border: 2px solid ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+#userSelected {
+    width: 90%;
+    border: 2px solid ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
 #roomSelected {
     width: 90%;
     border: 2px solid ;
