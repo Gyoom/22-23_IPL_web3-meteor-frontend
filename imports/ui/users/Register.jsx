@@ -42,7 +42,7 @@ export const Register = () => {
                 <input type='text' placeholder='type your nickname' className = "form-control" value = {pseudo} onChange={handleChangePseudo}></input><br />
                 <input type='text' placeholder='type your email' className = "form-control" value = {email} onChange={handleChangeEmail}></input><br />
                 <input type='password' placeholder='type your password' className = "form-control" value = {password} onChange={handleChangePassword}></input><br />
-                <button type='submit' class="btn btn-primary">Register</button>
+                <button type='submit' className="btn btn-primary">Register</button>
             </form>
         </div>
     );

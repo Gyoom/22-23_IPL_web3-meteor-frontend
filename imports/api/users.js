@@ -57,7 +57,8 @@ usersAddOne = function(username, email, password) { // ok
     return Accounts.createUser({
         username: username, 
         email: email, 
-        password: password
+        password: password,
+        profile: "user"
     }, error => {
         if (error) {
             console.log('Error users.addOne :' + error);
@@ -71,6 +72,10 @@ getLoggedUser = function() { // ok
     Meteor.user();
     return Meteor.user();
 },
+
+isAdmin = function() {
+    return getLoggedUser().profile == "admin";
+}
 
 getUserByName = function(username) {
     return useTracker(() => {
@@ -87,5 +92,7 @@ getAllUsers = function() { // ok
         return Meteor.users.find().fetch();
     });
 }
+
+
     
-export { usersLogin, usersLogout, usersAddOne, getLoggedUser, getUserByName, getAllUsers };
+export { isAdmin, usersLogin, usersLogout, usersAddOne, getLoggedUser, getUserByName, getAllUsers };

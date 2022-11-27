@@ -58,6 +58,10 @@ async function insertMessage({ username, roomName, text }) { // ok
     await MessagesCollection.insertAsync({ username, roomName, text, createdAt: date });
 }
 
+Meteor.publish('deleteAMessage', function ({messageId}) {
+    MessagesCollection.remove({_id: messageId});
+});
+
 
 // Startup
 
@@ -67,13 +71,15 @@ Meteor.startup(async () => {
         await Accounts.createUser({
             username: "Alfred", 
             email: "Alfred", 
-            password: "ABC"
+            password: "ABC",
+            profile: "admin"
         });
 
         await Accounts.createUser({
             username: "Max", 
             email: "Max", 
-            password: "ABC"
+            password: "ABC",
+            profile: "user"
         });
 
         await insertRoom({

@@ -12,9 +12,9 @@ export const RoomSelect = ({ setRoomSelected }) => {
     }
 
     return (
-        <div id="roomSelected">
+        <div id="subChatCategory">
             <h3>Choisissez une room : </h3>
-             <select onChange={(e) => handleChange(e)}>
+             <select className="custom-select" onChange={(e) => handleChange(e)}>
                 <option value="">-- please chose a room --</option>
                 {rooms.map(room =>  <option key={room.roomName} value={room.roomName}>{room.roomName}</option>)}
             </select>

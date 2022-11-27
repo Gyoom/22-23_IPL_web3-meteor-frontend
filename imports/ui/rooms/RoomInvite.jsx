@@ -33,13 +33,13 @@ export const RoomInvite = () => {
 
  
     return (
-        <div id="roomInvite">
+        <div id="chatCategory">
             <h3>Invite un utilisteur dans une de tes rooms : </h3>
             <RoomSelect setRoomSelected={setRoomSelected} /> 
             <UserSelect setUserSelected={setUserSelected} users = {users}/>
-            <form onSubmit={inviteToRoom}>
+            <form id="subChatCategory" onSubmit={inviteToRoom}>
                 <label>Invite cet utilisateur dans la room choisie.</label><br />
-                <button type='submit'>invite</button>
+                <button className="btn btn-primary" type='submit'>Inviter</button>
             </form>
         </div>
     )

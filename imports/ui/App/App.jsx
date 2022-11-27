@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Context } from "../contexts/ActualUserContext";
 // Calls to server : 
-import { usersLogout } from '../../api/users';
+import { usersLogout, getLoggedUser } from '../../api/users';
 // Components : 
 import { Chat } from '../rooms/Chat';
 import { Auth } from '../users/Auth';

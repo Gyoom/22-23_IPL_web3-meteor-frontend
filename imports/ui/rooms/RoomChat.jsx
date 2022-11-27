@@ -13,12 +13,12 @@ export const RoomChat = () => {
 
     return (
 
-        <div id="roomChat">
-            <h3>Room name : {roomSelected != ""? roomSelected : " no room selected"}</h3>
+        <div id="chatCategory">
+            <h3>Nom de la room : {roomSelected != ""? roomSelected : "Pas de room sélectionnée"}</h3>
             <RoomSelect setRoomSelected={setRoomSelected} />  
             <div id="messageChat">
-                {roomSelected == ""? <p>No room selected</p> : ""}
-                {messages.map(message => <MessageLine key={message._id} username={message.username} date={message.createdAt} text={message.text}/>)}
+                {roomSelected == ""? <p>Pas de room sélectionnée</p> : ""}
+                {messages.map(message => <MessageLine key={message._id} username={message.username} date={message.createdAt} text={message.text} id={message._id}/>)}
             </div>
             <MessageForm  roomName={roomSelected}/>
         </div>

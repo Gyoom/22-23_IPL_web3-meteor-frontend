@@ -50,7 +50,12 @@ MessagesCollection.allow({
         });
     }
 
-    export { SendAMessage, getAllMessagesFromARoom };
+    deleteAMessage = function(messageId) {
+        Meteor.subscribe('deleteAMessage', {messageId});
+        console.log("deleted")
+    }
+
+    export { SendAMessage, getAllMessagesFromARoom, deleteAMessage };
 
 
 
